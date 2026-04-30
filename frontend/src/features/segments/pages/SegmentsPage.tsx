@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export const SegmentsPage: React.FC = () => {
   const [clusterResult, setClusterResult] = useState<any>(null);
-  const [data, setData] = useState<any>(null);
+  const [_data, setData] = useState<any>(null);
   const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,11 +27,11 @@ export const SegmentsPage: React.FC = () => {
     return letters[index % letters.length];
   };
 
-  const getSegmentName = (index: number, size: number, total: number) => {
-    const percentage = ((size / total) * 100).toFixed(1);
-    if (percentage > 40) return 'Large Segment';
-    if (percentage > 20) return 'Medium Segment';
-    if (percentage > 10) return 'Small Segment';
+  const getSegmentName = (_index: number, size: number, total: number) => {
+    const percentageNum = (size / total) * 100;
+    if (percentageNum > 40) return 'Large Segment';
+    if (percentageNum > 20) return 'Medium Segment';
+    if (percentageNum > 10) return 'Small Segment';
     return 'Niche Segment';
   };
 
@@ -48,7 +48,7 @@ export const SegmentsPage: React.FC = () => {
   }
 
   const clusterSizes = clusterResult.cluster_sizes || {};
-  const totalCustomers = Object.values(clusterSizes).reduce((a: any, b: any) => a + b, 0);
+  const totalCustomers = Object.values(clusterSizes).reduce((a: number, b: number) => a + b, 0);
   const clusterProfiles = clusterResult.cluster_profiles || {};
   const featureNames = clusterResult.feature_names || [];
 

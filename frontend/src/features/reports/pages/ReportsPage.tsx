@@ -29,7 +29,7 @@ export const ReportsPage: React.FC = () => {
   const generateRecommendations = (result: any) => {
     const clusterProfiles = result.cluster_profiles || {};
     const clusterSizes = result.cluster_sizes || {};
-    const totalCustomers = Object.values(clusterSizes).reduce((a: any, b: any) => a + b, 0);
+    const totalCustomers = Object.values(clusterSizes).reduce((a: number, b: number) => a + b, 0);
 
     const recs: SegmentRecommendations[] = Object.entries(clusterProfiles).map(([segmentName, profile]: [string, any]) => {
       const size = profile.size || clusterSizes[segmentName] || 0;
@@ -50,7 +50,7 @@ export const ReportsPage: React.FC = () => {
     setRecommendations(recs);
   };
 
-  const generateSegmentRecs = (segmentName: string, topChars: any[], size: number, percentage: number) => {
+  const generateSegmentRecs = (_segmentName: string, topChars: any[], _size: number, _percentage: number) => {
     const recs = [];
     const charNames = topChars.map((c: any) => c.feature.toLowerCase());
 

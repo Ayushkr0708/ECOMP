@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { AuthState, User, LoginCredentials, RegisterCredentials } from '../../types/auth';
 import { authApi } from '../api/authApi';
 
-interface AuthContextType extends AuthState {
+export interface AuthContextType extends AuthState {
   login: (credentials: LoginCredentials) => Promise<void>;
   register: (credentials: RegisterCredentials) => Promise<void>;
   logout: () => void;
