@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, LoginPage, RegisterPage, ProtectedRoute } from './features/auth';
+import { AuthProvider, LoginPage, ProtectedRoute } from './features/auth';
 import { UploadPage } from './features/data-upload';
 import { PreprocessingPage } from './features/preprocessing';
 import { ClusteringPage } from './features/clustering';
