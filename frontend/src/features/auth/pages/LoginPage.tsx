@@ -13,10 +13,12 @@ export const LoginPage: React.FC = () => {
     <div className="auth-page">
       <div className="auth-container">
         <h1>Login to ECOMP</h1>
+        <div style={{ background: '#e7f3ff', padding: '10px', borderRadius: '4px', marginBottom: '1rem', fontSize: '0.9rem' }}>
+          <strong>Demo Login:</strong><br />
+          Username: <code>admin</code><br />
+          Password: <code>admin123</code>
+        </div>
         <LoginForm onSuccess={handleSuccess} />
-        <p className="auth-switch">
-          Don't have an account? <a href="/register">Register</a>
-        </p>
       </div>
     </div>
   );

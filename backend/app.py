@@ -28,6 +28,20 @@ def create_app(config_name=None):
     
     with app.app_context():
         db.create_all()
+        
+        # Create default admin user if not exists
+        from features.auth.models.user import User
+        from werkzeug.security import generate_password_hash
+        
+        if not User.query.filter_by(username='admin').first():
+            admin = User(
+                username='admin',
+                email='admin@ecomp.com',
+                password_hash=generate_password_hash('admin123')
+            )
+            db.session.add(admin)
+            db.session.commit()
+            print("Default admin user created: admin / admin123")
     
     @app.route('/api/health', methods=['GET'])
     def health_check():
